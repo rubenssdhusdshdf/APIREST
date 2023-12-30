@@ -33,7 +33,30 @@ async function loadFavourites() {
 } 
 }
 
+// Save cats into favourites
+
+async function saveFavouriteCats() {
+  const res = await fetch(API_URL_FAVOURITES, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      image_id: 'dje'
+    }),
+  });
+  const data = await res.json();
+
+  console.log('Save')
+  console.log(res)
+
+  if (res.status != 200) {
+    spanError.innerHTML= "It was an error: " + res.status + data.message;
+} 
+}
+
 
 
 loadRandomCats();
 loadFavourites();
+saveFavouriteCats();
