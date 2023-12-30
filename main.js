@@ -1,22 +1,39 @@
-const API_URL = "https://api.thecatapi.com/v1/images/search?limit=3";
+const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=live_PXnfFUsZ91zC4J92nCT3MaFEePP2PxEYl2lDCcREkECOfnvulI76tz9cBqXZvOUG';
+const API_URL_FAVOURITES = 'https://api.thecatapi.com/v1/favourites?limit=2&api_key=live_PXnfFUsZ91zC4J92nCT3MaFEePP2PxEYl2lDCcREkECOfnvulI76tz9cBqXZvOUG';
 
-async function reload() {
-  const res = await fetch(API_URL); // para indicarle que tiene un llamado asincrono
+
+const spanError = document.getElementById('error');
+
+
+// Load cats - this function load random cats from the API
+async function loadRandomCats() {
+  const res = await fetch(API_URL_RANDOM); // to indicate that it has an asynchronous call
   const data = await res.json();
 
-  const img = document.querySelector("img");
-  img.src = data[0].url;
-
-  console.log(data);
-  const img1 = document.getElementById("img1");
-  const img2 = document.getElementById("img2");
-  const img3 = document.getElementById("img3");
-
-  img1.src = data[0].url;
-  img2.src = data[1].url;
-  img3.src = data[2].url;
+  if (res.status != 200) {
+    spanError.innerHTML= "It was an error: " + res.status;
+  } else {
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+ 
+    img1.src= data[0].url;
+    img2.src= data[1].url;
+  }
 }
 
-// Ahora cuando damos click a recargar, nos deberia recargar una imagen. Para que no nos aparezca vacio  anadiremos
+// Load favourite cats - this function POST the cats saved in favourites
 
-reload(); // llama a la funcion reload nada mas carga el código
+async function loadFavourites() {
+  const res = await fetch(API_URL_FAVOURITES); // to indicate that it has an asynchronous call
+  const data = await res.json();
+  console.log(data)
+
+  if (res.status != 200) {
+    spanError.innerHTML= "It was an error: " + res.status + data.message;
+} 
+}
+
+
+
+loadRandomCats();
+loadFavourites();

@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Random Cat</h1>
-     <img id="img1" alt="Random Cat Pic" width="300"><!-- We dont add the src because we will generate it from the main.js file -->
-     <img id="img2" alt="Random Cat Pic" width="300">
-     <img id="img3" alt="Random Cat Pic" width="300">
+    <title>Gatitos aleatorios</title>
 
-    <button onclick = "reload()">Reload</button> <!-- Nuestro llama a una funcion llamada Reload en JavaScript -->
+
+</head>
+
+
+<body>
+    <h1>Cat's App</h1>
+    <span id="error"></span>
+
+
+    <section id="randomMichis">
+        <h2>Random Cats</h2>
+
+
+        <article>
+            <img id="img1" width="150" alt="Foto gatito aleatorio">
+            <button>Save</button>
+        </article>
+
+
+        <article>
+            <img id="img2" width="150" alt="Foto gatito aleatorio">
+            <button>Save</button>
+        </article>
+
+
+        <button onclick="loadRandomCats()">Refresh</button>
+    </section>
+
+
+    <section id="favouritesMichis">
+        <h2>Favourite cats</h2>
+
+
+        <article>
+            <img id="img1" width="150" alt="Foto gatito aleatorio">
+            <button>Sacar al michi de favoritos</button>
+        </article>
+    </section>
+
+
+    <script src="./main.js"></script>
 </body>
-<script src="main.js"></script>
+
+
 </html>
