@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Poppins&display=swap"
+        rel="stylesheet">
     <title>Gatitos aleatorios</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Generate Cat images</h1>
-        <p> Generate cat images for free thanks to this app</p>
+        <h1>Random cat images</h1>
+        <p> 🐱 Generate cat images for free thanks to this app</p>
     </header>
     <main>
         <span id="error"></span>
@@ -36,20 +40,29 @@
 
                 <article class="grid-item">
                     <img id="img3" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn1">
+                    <button id="btn3">
                         Save
                     </button>
                 </article>
 
                 <article class="grid-item">
                     <img id="img4" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn1">
+                    <button id="btn4">
                         Save
                     </button>
                 </article>
             </div>
 
             <button class="reload" onclick="loadRandomMichis()">Reload</button>
+        </section>
+
+        <section id="uploadingMichi">
+            <h2>Upload your cat pic</h2>
+            <hr>
+            <form id="uploadingForm">
+                <input id="file" type="file" name="file" />
+                <button type="button" onclick="uploadMichiPhoto()">Submit</button>
+            </form>
         </section>
 
         <h2>Favourite Cats</h2>
