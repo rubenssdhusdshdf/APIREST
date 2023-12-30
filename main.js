@@ -1,48 +1,65 @@
-const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=live_PXnfFUsZ91zC4J92nCT3MaFEePP2PxEYl2lDCcREkECOfnvulI76tz9cBqXZvOUG';
-const API_URL_FAVOURITES = 'https://api.thecatapi.com/v1/favourites?limit=2&api_key=live_PXnfFUsZ91zC4J92nCT3MaFEePP2PxEYl2lDCcREkECOfnvulI76tz9cBqXZvOUG';
+const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
+const API_URL_FAVOTITES = 'https://api.thecatapi.com/v1/favourites?api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
+const API_URL_FAVOUTITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=c08d415f-dea7-4a38-bb28-7b2188202e46`;
 
+const spanError = document.getElementById('error')
 
-const spanError = document.getElementById('error');
-
-
-// Load cats - this function load random cats from the API
-async function loadRandomCats() {
-  const res = await fetch(API_URL_RANDOM); // to indicate that it has an asynchronous call
+async function loadRandomMichis() {
+  const res = await fetch(API_URL_RANDOM);
   const data = await res.json();
+  console.log('Random')
+  console.log(data)
 
-  if (res.status != 200) {
-    spanError.innerHTML= "It was an error: " + res.status;
+  if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error: " + res.status;
   } else {
     const img1 = document.getElementById('img1');
     const img2 = document.getElementById('img2');
- 
-    img1.src= data[0].url;
-    img2.src= data[1].url;
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    
+    img1.src = data[0].url;
+    img2.src = data[1].url;
+
+    btn1.onclick = () => saveFavouriteMichi(data[0].id);
+    btn2.onclick = () => saveFavouriteMichi(data[1].id);
   }
 }
 
-// Load favourite cats - this function POST the cats saved in favourites
-
-async function loadFavourites() {
-  const res = await fetch(API_URL_FAVOURITES); // to indicate that it has an asynchronous call
+async function loadFavouriteMichis() {
+  const res = await fetch(API_URL_FAVOTITES);
   const data = await res.json();
+  console.log('Favoritos')
   console.log(data)
 
-  if (res.status != 200) {
-    spanError.innerHTML= "It was an error: " + res.status + data.message;
-} 
+  if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error: " + res.status + data.message;
+  } else {
+    data.forEach(michi => {
+      const section = document.getElementById('favoriteMichis')
+      const article = document.createElement('article');
+      const img = document.createElement('img');
+      const btn = document.createElement('button');
+      const btnText = document.createTextNode('Remove from favourites');
+
+      img.src = michi.image.url;
+      img.width = 150;
+      btn.appendChild(btnText);
+      article.appendChild(img);
+      article.appendChild(btn);
+      section.appendChild(article);
+    });
+  }
 }
 
-// Save cats into favourites
-
-async function saveFavouriteCats() {
-  const res = await fetch(API_URL_FAVOURITES, {
+async function saveFavouriteMichi(id) {
+  const res = await fetch(API_URL_FAVOTITES, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      image_id: 'dje'
+      image_id: id
     }),
   });
   const data = await res.json();
@@ -50,13 +67,25 @@ async function saveFavouriteCats() {
   console.log('Save')
   console.log(res)
 
-  if (res.status != 200) {
-    spanError.innerHTML= "It was an error: " + res.status + data.message;
-} 
+  if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error: " + res.status + data.message;
+  }
 }
 
+// Delete
 
+async function deleteFavourites(id) {
+  const res = await fetch(API_URL_FAVOUTITES_DELETE(id), {
+    method: DELETE,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      image_id: id
+    }),
+  });
+  const data = await res.json();
+}
 
-loadRandomCats();
-loadFavourites();
-saveFavouriteCats();
+loadRandomMichis();
+loadFavouriteMichis();

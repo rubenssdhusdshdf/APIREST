@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatitos aleatorios</title>
-
-
 </head>
 
-
 <body>
-    <h1>Cat's App</h1>
-    <span id="error"></span>
+    <h1>Cats App</h1>
 
+    <span id="error"></span>
 
     <section id="randomMichis">
         <h2>Random Cats</h2>
 
-
         <article>
             <img id="img1" width="150" alt="Foto gatito aleatorio">
-            <button id="btn1" onclick="saveFavouriteCats()">Save</button>
+            <button id="btn1">
+                Save in favourites
+            </button>
         </article>
-
 
         <article>
             <img id="img2" width="150" alt="Foto gatito aleatorio">
-            <button id="btn2" onclick="saveFavouriteCats()">Save</button>
+            <button id="btn2">
+                Save in favourites
+            </button>
         </article>
 
 
-        <button onclick="loadRandomCats()">Refresh</button>
+        <button onclick="loadRandomMichis()">Reload</button>
     </section>
 
-
-    <section id="favouritesMichis">
-        <h2>Favourite cats</h2>
-
+    <section id="favoriteMichis">
+        <h2>Michis favoritos</h2>
 
         <article>
             <img id="img1" width="150" alt="Foto gatito aleatorio">
-            <button>Sacar al michi de favoritos</button>
+            <button>Remove from favourites</button>
         </article>
     </section>
 
-
     <script src="./main.js"></script>
 </body>
-
 
 </html>
