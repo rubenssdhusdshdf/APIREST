@@ -6,43 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatitos aleatorios</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-    <h1>Michis App</h1>
+    <header>
+        <h1>Generate Cat images</h1>
+        <p> Generate cat images for free thanks to this app</p>
+    </header>
+    <main>
+        <span id="error"></span>
+        <section id="randomMichis">
+            <h2>Random Cats</h2>
+            <hr>
+            <div class="grid-container">
+                <article class="grid-item">
+                    <img id="img1" height=500 alt="Foto gatito aleatorio">
+                    <button id="btn1">
+                        Save
+                    </button>
+                </article>
 
-    <span id="error"></span>
+                <article class="grid-item">
+                    <img id="img2" height=500 alt="Foto gatito aleatorio">
+                    <button id="btn1">
+                        Save
+                    </button>
+                </article>
 
-    <section id="randomMichis">
-        <h2>Michis aleatorios</h2>
+                <article class="grid-item">
+                    <img id="img3" height=500 alt="Foto gatito aleatorio">
+                    <button id="btn1">
+                        Save
+                    </button>
+                </article>
 
-        <article>
-            <img id="img1" width="150" alt="Foto gatito aleatorio">
-            <button id="btn1">
-                Guardar michi en favoritos
-            </button>
-        </article>
+                <article class="grid-item">
+                    <img id="img4" height=500 alt="Foto gatito aleatorio">
+                    <button id="btn1">
+                        Save
+                    </button>
+                </article>
+            </div>
 
-        <article>
-            <img id="img2" width="150" alt="Foto gatito aleatorio">
-            <button id="btn2">
-                Guardar michi en favoritos
-            </button>
-        </article>
+            <button class="reload" onclick="loadRandomMichis()">Reload</button>
+        </section>
+
+        <h2>Favourite Cats</h2>
+        <hr>
+        <section class="grid-container" id="favoriteMichis">
+            <article>
+                <img id="img1" width="500" alt="Foto gatito aleatorio">
+                <button></button>
+            </article>
+        </section>
 
 
-        <button onclick="loadRandomMichis()">Recargar</button>
-    </section>
-
-    <section id="favoriteMichis">
-        <h2>Michis favoritos</h2>
-
-        <article>
-            <img id="img1" width="150" alt="Foto gatito aleatorio">
-            <button>Sacar al michi de favoritos</button>
-        </article>
-    </section>
-
+    </main>
     <script src="./main.js"></script>
 </body>
 
