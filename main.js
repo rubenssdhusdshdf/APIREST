@@ -1,7 +1,7 @@
 const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=4&api_key=c08d415f-dea7-4a38-bb28-7b2188202e46';
 const API_URL_FAVOTITES = 'https://api.thecatapi.com/v1/favourites';
 const API_URL_FAVOTITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
-const API_URL_FAVOTITES_UPLOAD = (id) => `https://api.thecatapi.com/v1/images/upload`;
+const API_URL_FAVOTITES_UPLOAD = 'https://api.thecatapi.com/v1/images/upload';
 
 const spanError = document.getElementById('error')
 
@@ -93,17 +93,13 @@ async function saveFavouriteMichi(id) {
       image_id: id
     }),
   });
+
   const data = await res.json();
+  console.log(data.message);
 
-  console.log('Save')
-  console.log(res)
+  // You can optionally update the UI here without calling saveFavouriteMichi() again
 
-  if (res.status !== 200) {
-    spanError.innerHTML = "Hubo un error: " + res.status + data.message;
-  } else {
-    console.log('Michi guardado en favoritos')
-    loadFavouriteMichis();
-  }
+  console.log("prueba", res);
 }
 
 async function deleteFavouriteMichi(id) {
@@ -124,29 +120,27 @@ async function deleteFavouriteMichi(id) {
 }
 
 async function uploadMichiPhoto() {
-  const form = document.getElementById('uploadingForm')
+  const form = document.getElementById('uploadingForm');
   const formData = new FormData(form);
 
   const res = await fetch(API_URL_FAVOTITES_UPLOAD, {
-    method: 'POST',
-    headers: {
-      //'Content-Type': 'multipart/formdata',
-      'X-API-KEY': 'api_key=c08d415f-dea7-4a38-bb28-7b2188202e46',
-    },
-      body: formData
-  })
+      method: 'POST',
+      headers: {
+          'X-API-KEY': 'c08d415f-dea7-4a38-bb28-7b2188202e46',
+      },
+      body: formData,
+  });
 
-const data = await res.json();
+  const data = await res.json();
 
-if (res.status !== 201) {
-    spanError.innerHTML = `Hubo un error al subir michi: ${res.status} ${data.message}`
-}
-else {
-    console.log("Foto de michi cargada :)");
-    console.log({ data });
-    console.log(data.url);
-    saveFavouriteMichi(data.id) //para agregar el michi cargado a favoritos.
-}
+  if (res.status !== 201) {
+      spanError.innerHTML = `Hubo un error al subir michi: ${res.status} ${data.message}`;
+  } else {
+      console.log("Foto de michi cargada :)");
+      console.log({ data });
+      console.log(data.url);
+      saveFavouriteMichi(data.id); // para agregar el michi cargado a favoritos.
+  }
 }
 
 loadRandomMichis();

@@ -59,8 +59,16 @@ p {
     padding-bottom: 20px;
 }
 
-.reload {
-    margin-bottom: 20px;
+.reload-button {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    margin-bottom: 40px;
+    
 }
 
 .grid-item {
@@ -97,6 +105,16 @@ button{
     font-weight: 700;
     cursor: pointer;
     transition-duration: 300ms;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 15px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+#reload-button {
+    border-radius: 100px;
 }
 
 button:hover{
@@ -105,16 +123,15 @@ button:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   } 
 
-.favoriteButton{
+  .favoriteButton {
     position: absolute;
     width: fit-content;
-    font-size: 10rem;
+    font-size: 5rem; /* Adjust the font size to make the heart smaller */
     background-color: transparent;
     opacity: 0%;
-  
-  }
+}
 
-  .favoriteButton:hover{
+.favoriteButton:hover {
     background-color: transparent;
     color: #FF4C29;
     text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -122,31 +139,21 @@ button:hover{
     opacity: 60%;
     visibility: unset;
     z-index: 100000000;
-  }
-  .favoriteButton:active{
-    opacity: 100%;
-  
-  }
+}
 
-#reload-button{
-    display: flex;
-    margin: 0 auto;
-    margin-top: 15px;
-    border-radius: 100px;
-    justify-content: center;
-    margin-bottom: 10px;
-    margin-bottom: 40px;
-  }
+.favoriteButton:active {
+    opacity: 100%;
+}
 
 /* Dynamic content*/
 
 article {
     border-radius: 20px;
     flex-direction: column;
-    max-width: 100%;
+    max-width: 2000px;
     grid-template-columns: minmax(200px, 600px);
     min-height: 400px;
-    height: 200px;
+
     border: 1px solid white; 
     box-sizing: border-box;
     text-align: center;
@@ -189,9 +196,6 @@ article button {
     border: 1px solid white;
 }
 
-input[type="file"] {
-    display: none;
-}
 .custom-file-upload {
     border: 1px solid white;
     border: 25px;
@@ -200,5 +204,39 @@ input[type="file"] {
     cursor: pointer;
 }
 
+
+/* Typography adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Adjust heading font size */
+    }
+
+    p {
+        font-size: 0.9rem; /* Adjust paragraph font size */
+    }
+
+    /* Add more styles as needed for smaller screens */
+}
+
+/* Typography adjustments for larger screens */
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 18px; /* Adjust font size for larger screens */
+    }
+
+    h2 {
+        font-size: 2rem; /* Adjust heading font size */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust paragraph font size */
+    }
+
+    /* Add more styles as needed for larger screens */
+}
 
 

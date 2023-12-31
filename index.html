@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Poppins&display=swap"
         rel="stylesheet">
-    <title>Gatitos aleatorios</title>
+    <title>Random Cats</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -26,25 +26,27 @@
             <div class="grid-container">
                 <article class="grid-item">
                     <img id="img1" alt="Foto gatito aleatorio">
-                    <button id="button1" class="favoriteButton">
+                    <button id="btn1" onclick="saveFavouriteMichi()" class="favoriteButton">
+
+
                         <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
                 <article class="grid-item">
                     <img id="img2" alt="Foto gatito aleatorio">
-                    <button id="button2" class="favoriteButton">
+                    <button id="btn2" class="favoriteButton">
                         <img src="./Img/heart.png" alt="">
                     </button>
                 </article>
                 <article class="grid-item">
                     <img id="img3" height="100" width="100" alt="Foto gatito aleatorio">
-                    <button id="button3" class="favoriteButton">
+                    <button id="btn3" class="favoriteButton">
                         <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
                 <article class="grid-item">
                     <img id="img4" alt="Foto gatito aleatorio">
-                    <button id="button4" class="favoriteButton">
+                    <button id="btn4" class="favoriteButton">
                         <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
@@ -56,12 +58,9 @@
         <section id="uploadingMichi">
             <h2>Upload your cat pic</h2>
             <hr>
-            <form id="uploadingForm">
+            <form id="uploadingForm" enctype="multipart/form-data" onsubmit="uploadMichiPhoto(); return false;">
                 <input id="file" type="file" name="file" />
-                <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-cloud-ucupload"></i> Chose your file
-                </label>
-                <button class="submit-cat" type="button" onclick="uploadMichiPhoto()">Submit</button>
+                <button class="submit-cat" type="submit">Submit</button>
             </form>
         </section>
 
