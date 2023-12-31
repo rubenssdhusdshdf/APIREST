@@ -52,6 +52,7 @@ async function loadFavouriteMichis() {
       const section = document.getElementById('favoriteMichis');
       section.innerHTML = ''; // Clear existing content before adding new
 
+
       // Use a promise to wait for all images to load before updating the UI
       const imageLoadPromises = data.map(async (michi) => {
           const article = document.createElement('article');
@@ -65,6 +66,10 @@ async function loadFavouriteMichis() {
               article.appendChild(btn);
               btn.appendChild(btnText);
               btn.onclick = () => deleteFavouriteMichi(michi.id);
+              img.width = 300;
+              img.height = 300;
+              article.appendChild(img);
+              article.appendChild(btn);
               section.appendChild(article);
           };
 
@@ -76,7 +81,6 @@ async function loadFavouriteMichis() {
       await Promise.all(imageLoadPromises);
   }
 }
-
 
 async function saveFavouriteMichi(id) {
   const res = await fetch(API_URL_FAVOTITES, {
@@ -132,6 +136,8 @@ async function uploadMichiPhoto() {
       body: formData
   })
 
+const data = await res.json();
+
 if (res.status !== 201) {
     spanError.innerHTML = `Hubo un error al subir michi: ${res.status} ${data.message}`
 }
@@ -145,3 +151,6 @@ else {
 
 loadRandomMichis();
 loadFavouriteMichis();
+saveFavouriteMichi()
+deleteFavouriteMichi()
+uploadMichiPhoto();

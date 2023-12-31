@@ -25,35 +25,32 @@
             <hr>
             <div class="grid-container">
                 <article class="grid-item">
-                    <img id="img1" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn1">
-                        Save
+                    <img id="img1" alt="Foto gatito aleatorio">
+                    <button id="button1" class="favoriteButton">
+                        <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
-
                 <article class="grid-item">
-                    <img id="img2" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn1">
-                        Save
+                    <img id="img2" alt="Foto gatito aleatorio">
+                    <button id="button2" class="favoriteButton">
+                        <img src="./Img/heart.png" alt="">
                     </button>
                 </article>
-
                 <article class="grid-item">
-                    <img id="img3" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn3">
-                        Save
+                    <img id="img3" height="100" width="100" alt="Foto gatito aleatorio">
+                    <button id="button3" class="favoriteButton">
+                        <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
-
                 <article class="grid-item">
-                    <img id="img4" height=500 alt="Foto gatito aleatorio">
-                    <button id="btn4">
-                        Save
+                    <img id="img4" alt="Foto gatito aleatorio">
+                    <button id="button4" class="favoriteButton">
+                        <img src="./Img/heart.png" height="100" width="100" alt="">
                     </button>
                 </article>
             </div>
 
-            <button class="reload" onclick="loadRandomMichis()">Reload</button>
+            <button id="reload-button" onclick="loadRandomMichis()">Reload</button>
         </section>
 
         <section id="uploadingMichi">
@@ -61,15 +58,18 @@
             <hr>
             <form id="uploadingForm">
                 <input id="file" type="file" name="file" />
-                <button type="button" onclick="uploadMichiPhoto()">Submit</button>
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-ucupload"></i> Chose your file
+                </label>
+                <button class="submit-cat" type="button" onclick="uploadMichiPhoto()">Submit</button>
             </form>
         </section>
 
         <h2>Favourite Cats</h2>
         <hr>
         <section class="grid-container" id="favoriteMichis">
-            <article>
-                <img id="img1" width="500" alt="Foto gatito aleatorio">
+            <article class="grid-item">
+                <img id="img1" alt="Foto gatito aleatorio">
                 <button></button>
             </article>
         </section>

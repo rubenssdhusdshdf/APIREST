@@ -3,6 +3,7 @@
     --header: #141a31;
     --main: #081029;
     --paraf: #505f94;
+    --orange-coloro: #FF4C29 ;
 }
 
 * {
@@ -10,6 +11,23 @@
     padding: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--main);
+}
+
+main {
+    color: white;
+    padding: 40px;
+}
+
+h2 {
+    padding-bottom: 5px;
+}
+
+hr {
+    border: 0.2px solid white;
 }
 
 /* Header */
@@ -32,36 +50,13 @@ p {
     color: var(--paraf);
 }
 
-/* General */
-body {
-    background-color: var(--main);
-}
-
-main {
-    color: white;
-    padding: 40px;
-}
-
-h2 {
-    padding-bottom: 5px;
-}
-
-hr {
-    border: 0.2px solid white;
-}
-
-/* Grid Styles */
+/* Random Cats image */
 .grid-container {
     padding-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 100px;
     padding-bottom: 20px;
-}
-
-.grid-item {
-    border-radius: 20px;
-    flex-direction: column;
 }
 
 .reload {
@@ -69,10 +64,13 @@ hr {
 }
 
 .grid-item {
-    max-width: 200px;
-    min-width: 200px;
+    border-radius: 20px;
+    flex-direction: column;
+    max-width: 100%;
+    grid-template-columns: minmax(200px, 600px);
+    min-height: 400px;
     height: 200px;
-    border: 1px solid white; /* Add border style if needed */
+    border: 1px solid white; 
     box-sizing: border-box;
     text-align: center;
     display: flex;
@@ -82,15 +80,95 @@ hr {
     position: relative; /* Needed for absolute positioning of icon */
 }
 
-/* Example styling for individual grid items */
-.grid-item img {
+.grid-item #img1 #img2 #img3 #img4 {
+    width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire space while maintaining aspect ratio */
+    object-fit: cover;
 }
 
-/* Styling for the icon */
-.save-div {
+button{
+    font-size: 1.2rem;
+    margin: 15px;
+    padding: 10px;
+    width: 60%;
+    background-color: var(--main);
+    border: none;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+button:hover{
+    background-color: var(--header);
+    color: var(--orange-coloro);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  } 
+
+.favoriteButton{
+    position: absolute;
+    width: fit-content;
+    font-size: 10rem;
+    background-color: transparent;
+    opacity: 0%;
+  
+  }
+
+  .favoriteButton:hover{
+    background-color: transparent;
+    color: #FF4C29;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: none;
+    opacity: 60%;
+    visibility: unset;
+    z-index: 100000000;
+  }
+  .favoriteButton:active{
+    opacity: 100%;
+  
+  }
+
+#reload-button{
     display: flex;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 100px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-bottom: 40px;
+  }
+
+/* Dynamic content*/
+
+article {
+    border-radius: 20px;
+    flex-direction: column;
+    max-width: 100%;
+    grid-template-columns: minmax(200px, 600px);
+    min-height: 400px;
+    height: 200px;
+    border: 1px solid white; 
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflowing content */
+    position: relative; /* Needed for absolute positioning of icon */
+}
+
+article img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px
+}
+
+article button {
+    background-color: white;
+    width: 100%;
+    margin: 0px;
+    color: var(--main)
 }
 
 /* FORM SECTION*/
@@ -98,11 +176,29 @@ hr {
 #uploadingForm {
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Media Query for smaller screens */
-@media only screen and (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
+.submit-cat {
+
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid white;
 }
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid white;
+    border: 25px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
